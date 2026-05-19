@@ -1,3 +1,57 @@
+/* ===== TA05 – Formulario compacto ===== */
+.form-compacto {
+  max-width: 380px;
+  margin: 8px 0 0 8px;
+
+  ion-card-header {
+    padding-bottom: 4px;
+    ion-card-title { font-size: 0.95rem; }
+  }
+
+  ion-card-content {
+    padding-top: 4px;
+  }
+
+  ion-item {
+    --min-height: 44px;
+    --padding-start: 8px;
+    font-size: 0.85rem;
+  }
+
+  ion-label {
+    font-size: 0.78rem !important;
+    margin-bottom: 2px;
+  }
+
+  ion-input {
+    --padding-top: 4px;
+    --padding-bottom: 4px;
+    font-size: 0.85rem;
+  }
+
+  ion-button {
+    --padding-top: 6px;
+    --padding-bottom: 6px;
+    font-size: 0.82rem;
+    height: 36px;
+    margin-top: 6px !important;
+  }
+
+  .error-obligatorio {
+    display: block;
+    font-size: 0.78rem;
+    margin-top: 6px;
+    padding-left: 4px;
+  }
+}
+
+.separador {
+  border: none;
+  border-top: 2px solid var(--ion-color-medium, #ccc);
+  margin: 16px 8px 4px 8px;
+  opacity: 0.4;
+}
+
 #container {
   text-align: center;
 

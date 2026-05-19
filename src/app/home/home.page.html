@@ -13,6 +13,68 @@
 
 <ion-content [fullscreen]="true">
 
+  <!-- ===== TODO TA05 – Formulario reactivo ===================================
+       [formGroup] enlaza el <form> con el FormGroup definido en el componente.
+       (ngSubmit) se dispara al pulsar el botón de tipo "submit".
+       formControlName enlaza cada ion-input con su FormControl correspondiente.
+  =========================================================================== -->
+  <ion-card class="form-compacto">
+    <ion-card-header>
+      <ion-card-title>Formulario para añadir un elemento</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Añadimos [formGroup] al formulario y le asignamos nuestro FormGroup -->
+      <form [formGroup]="formularioElemento" (ngSubmit)="agregarElemento()">
+
+        <!-- TODO TA05: formControlName="nombre" enlaza este input con
+             el FormControl "nombre" del FormGroup.
+             Al escribir, el FormControl se actualiza automáticamente. -->
+        <ion-item>
+          <ion-label position="stacked">Nombre *</ion-label>
+          <ion-input formControlName="nombre" placeholder="Nombre del elemento"></ion-input>
+        </ion-item>
+        @if (formularioElemento.get('nombre')?.invalid && formularioElemento.get('nombre')?.touched) {
+          @if (formularioElemento.get('nombre')?.errors?.['required']) {
+            <ion-label color="danger" class="error-obligatorio">El nombre es obligatorio.</ion-label>
+          }
+          @if (formularioElemento.get('nombre')?.errors?.['minlength']) {
+            <ion-label color="danger" class="error-obligatorio">Mínimo 3 caracteres.</ion-label>
+          }
+        }
+
+        <!-- TODO TA05: igual para "descripcion" -->
+        <ion-item>
+          <ion-label position="stacked">Descripción *</ion-label>
+          <ion-input formControlName="descripcion" placeholder="Descripción breve"></ion-input>
+        </ion-item>
+        @if (formularioElemento.get('descripcion')?.invalid && formularioElemento.get('descripcion')?.touched) {
+          @if (formularioElemento.get('descripcion')?.errors?.['required']) {
+            <ion-label color="danger" class="error-obligatorio">La descripción es obligatoria.</ion-label>
+          }
+          @if (formularioElemento.get('descripcion')?.errors?.['minlength']) {
+            <ion-label color="danger" class="error-obligatorio">Mínimo 5 caracteres.</ion-label>
+          }
+        }
+
+        <!-- TODO TA05: "categoria" es opcional en el modelo -->
+        <ion-item>
+          <ion-label position="stacked">Categoría</ion-label>
+          <ion-input formControlName="categoria" placeholder="Ej: Frontend, Backend…"></ion-input>
+        </ion-item>
+
+        <!-- TODO TA05: type="submit" lanza (ngSubmit) del <form> -->
+        <ion-button expand="block" type="submit" class="ion-margin-top">
+          Añadir elemento
+        </ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <!-- ===== FIN formulario reactivo ========================================== -->
+
+  <hr class="separador" />
+
   <!-- TODO Con signals no podemos usar [(ngModel)] directamente.
        Usamos property binding [ngModel] para leer el valor del signal (busqueda())
        y event binding (ngModelChange) para actualizar el signal con .set() -->
@@ -45,6 +107,6 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title>Footer Tarea TA01 - Angular + Ionic</ion-title>
+    <ion-title>Footer Tarea TA05 - Formularios Reactivos</ion-title>
   </ion-toolbar>
 </ion-footer>
