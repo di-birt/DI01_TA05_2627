@@ -1,5 +1,5 @@
 <!--
-  TAREA TA04 – HomePage
+  TAREA TA05 – HomePage
   Implementa los TODOs siguiendo los apartados indicados en la teoría.
 -->
 
@@ -75,18 +75,11 @@
 
   <hr class="separador" />
 
-  <!-- TODO Con signals no podemos usar [(ngModel)] directamente.
-       Usamos property binding [ngModel] para leer el valor del signal (busqueda())
-       y event binding (ngModelChange) para actualizar el signal con .set() -->
   <ion-item>
-    <!--  <ion-input [(ngModel)]="busqueda" placeholder="Buscar elemento..."></ion-input> -->
-    <!-- El value de un $event puede ser string | null | undefined y debemos controlarlos-->
     <ion-input [value]="busqueda()" (ionInput)="busqueda.set($event.detail.value ?? '')" placeholder="Buscar elemento..."></ion-input>
   </ion-item>
 
   <ion-list>
-    <!-- TODO - Los computed se llaman como funciones: elementosFiltrados() -->
-     <!-- @for (elemento of elementosFiltrados; track elemento.id) { -->
     @for (elemento of elementosFiltrados(); track elemento.id) {
       <ion-item button="true" (click)="verDetalle(elemento)">
         <ion-label>
@@ -97,8 +90,6 @@
     }
   </ion-list>
 
-  <!-- TODO - hayElementos también es computed: se llama como función hayElementos() -->
-  <!-- <ion-button expand="block" [disabled]="!hayElementos" (click)="mostrarToast()"> -->
   <ion-button expand="block" [disabled]="!hayElementos()" (click)="mostrarToast()">
     Mostrar mensaje
   </ion-button>
