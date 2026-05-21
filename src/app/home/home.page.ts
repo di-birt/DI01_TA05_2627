@@ -79,6 +79,9 @@ export class HomePage {
 
     //TODO: Recogemos como {nombre, descripcion, categoria} los valores que vienen desde el formulario formGroup
     const { nombre, descripcion, categoria } = this.formularioElemento.value;
+    //const nombre = this.formularioElemento.value.nombre;
+    //const descripcion = this.formularioElemento.value.descripcion;
+    //const categoria = this.formularioElemento.value.categoria;
 
     // Guardamos sin espacios en blanco innecesarios (quitamos con trim los espacios anteriores y posteriores)
     // Si algún valor es null o undefined, lo manejamos con ?? para ponerlo a ''
